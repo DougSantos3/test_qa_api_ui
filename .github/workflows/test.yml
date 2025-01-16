@@ -1,0 +1,39 @@
+name: Run Cypress Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_type:
+        description: 'Select the test type to run'
+        required: true
+        type: choice
+        options:
+          - ui
+          - api
+
+jobs:
+  cypress-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.18.0
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run selected tests
+        run: |
+          if [ "${{ github.event.inputs.test_type }}" == "ui" ]; then
+            npm run test:ui
+          elif [ "${{ github.event.inputs.test_type }}" == "api" ]; then
+            npm run test:api
+          else
+            echo "Unknown test type selected"
+            exit 1
+          fi
