@@ -5,10 +5,11 @@
   "main": "cypress.config.js",
   "scripts": {
     "cy:open": "cypress open",
-    "test:api": "cypress run --spec './cypress/e2e/api/tests/**/*.cy.js' && allure generate allure-results --clean && allure open &",
-    "test:ui": "cypress run --spec './cypress/e2e/ui/tests/*.cy.js' && allure generate allure-results --clean && allure open &",
-    "allure:generate": "allure generate allure-results --clean",
-    "allure:open": "allure open &"
+    "test:api": "cypress run --spec './cypress/e2e/api/tests/**/*.cy.js' && allure generate allure-results --clean && allure open",
+    "test:ui": "cypress run --spec './cypress/e2e/ui/tests/*.cy.js' && allure generate allure-results --clean && allure open",
+    "test:allure": "cypress run && allure generate allure-results --clean && allure open",
+    "allure": "allure-commandline",
+    "report": "allure generate allure-results --clean && allure open"
   },
   "keywords": [],
   "author": "Douglas Martins Santos",

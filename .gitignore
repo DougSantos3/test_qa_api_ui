@@ -17,3 +17,4 @@ act
 *.json
 app.js
 index.js
+*.json
