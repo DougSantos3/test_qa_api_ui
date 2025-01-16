@@ -25,11 +25,12 @@ jobs:
           node-version: 20.18.0
           cache: 'pnpm'
 
-      - name: Setup pnpm
-        run: npm install -g pnpm@9.15.4
-
-      - name: Verify pnpm installation
-        run: pnpm --version
+      - name: Install pnpm manually
+        run: |
+          curl -fsSL https://get.pnpm.io/install.sh | sh -
+          export PATH=$HOME/.local/share/pnpm/global/2/node_modules/.bin:$PATH
+          echo "pnpm installation successful"
+          pnpm --version
 
       - name: Install dependencies
         run: pnpm install
