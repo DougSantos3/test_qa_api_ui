@@ -8,3 +8,12 @@ cypress/support/component-index.*
 .idea/*
 .tool-versions
 pnpm-lock.yaml
+act
+*.html
+*.csv
+*.css 
+*.txt 
+*.ico
+*.json
+app.js
+index.js

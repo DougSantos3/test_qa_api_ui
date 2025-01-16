@@ -23,29 +23,23 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20.18.0
-          cache: 'pnpm'
-
-      - name: Install pnpm manually
-        run: |
-          curl -fsSL https://get.pnpm.io/install.sh | sh -
-          # Ensure the installed pnpm is available
-          echo "Adding pnpm to PATH"
-          export PATH=$HOME/.local/share/pnpm/global/2/node_modules/.bin:$PATH
-          echo "pnpm installation successful"
-          pnpm --version
-          # Persist PATH change for subsequent steps
-          echo "export PATH=$HOME/.local/share/pnpm/global/2/node_modules/.bin:$PATH" >> $GITHUB_ENV
+          cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Run selected tests
         run: |
           if [ "${{ github.event.inputs.test_type }}" == "ui" ]; then
-            pnpm run test:ui
+            npm run test:ui
           elif [ "${{ github.event.inputs.test_type }}" == "api" ]; then
-            pnpm run test:api
+            npm run test:api
           else
             echo "Unknown test type selected"
             exit 1
           fi
+
+      - name: Generate Allure report
+        run: |
+          npm run allure:generate
+          npm run allure:open
