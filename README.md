@@ -23,27 +23,24 @@ You need to download the packages:
 v20.18.0 lts
 ```
 
-```bash
-# npm version: 11.0.0
-npm install -g pnpm
-```
 
 ```bash
+# npm version: 11.0.0
 # Download dependencies
-pnpm install
+npm install
 ```
 
 Run tests:
 
 ```bash
 # Open dashboard cypress
-pnpm run cy:open
+npm run cy:open
 
 # Run tests ui
-pnpm run test:ui
+npm run test:ui
 
 # Run tests api
-pnpm run test:api
+npm run test:api
 ```
 
 ## Learn More

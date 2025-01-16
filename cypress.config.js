@@ -5,6 +5,7 @@ const cyPostgres = require('cypress-postgres-10v-compatibility')
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
+      require('@shelex/cypress-allure-plugin/writer')(on, config)
       on('task', {
         dbQuery: (query) => cyPostgres(query.query, query.connection),
       })
@@ -19,7 +20,6 @@ module.exports = defineConfig({
       runMode: 0,
       openMode: 0,
     },
-    specPattern: 'cypress/e2e/**/tests/*.cy.{js,ts,jsx,tsx}',
   },
 
   fixturesFolder: false,

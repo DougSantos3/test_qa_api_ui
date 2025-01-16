@@ -23,21 +23,23 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20.18.0
-          cache: 'pnpm'
-
-      - name: Install pnpm
-        run: npm install -g pnpm
+          cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Run selected tests
         run: |
           if [ "${{ github.event.inputs.test_type }}" == "ui" ]; then
-            pnpm run test:ui
+            npm run test:ui
           elif [ "${{ github.event.inputs.test_type }}" == "api" ]; then
-            pnpm run test:api
+            npm run test:api
           else
             echo "Unknown test type selected"
             exit 1
           fi
+
+      - name: Generate Allure report
+        run: |
+          npm run allure:generate
+          npm run allure:open
