@@ -9,21 +9,10 @@ on:
         type: choice
         options:
           - api
-          - ui
-        default: api
-      platform:
-        description: 'Select the platform to run tests (only for UI tests)'
-        required: false
-        type: choice
-        options:
-          - linux
-          - mac(disabled)
-          - windows(disabled)
-        default: linux
 
 jobs:
   cypress-tests:
-    runs-on: ${{ github.event.inputs.test_type == 'ui' && (github.event.inputs.platform == 'linux' && 'ubuntu-latest' || github.event.inputs.platform == 'mac' && 'macos-latest' || github.event.inputs.platform == 'windows' && 'windows-latest') || github.event.inputs.test_type == 'api' && 'ubuntu-latest' }}
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -41,10 +30,8 @@ jobs:
       - name: Run selected tests
         run: |
           if [ "${{ github.event.inputs.test_type }}" == "ui" ]; then
-            echo "Running UI tests on ${{ github.event.inputs.platform }}"
             npm run test:ui
           elif [ "${{ github.event.inputs.test_type }}" == "api" ]; then
-            echo "Running API tests"
             npm run test:api
           else
             echo "Unknown test type selected"

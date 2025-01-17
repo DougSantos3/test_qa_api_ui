@@ -1,11 +1,13 @@
 const { defineConfig } = require('cypress')
+const { allureCypress } = require('allure-cypress/reporter');
+
 
 const cyPostgres = require('cypress-postgres-10v-compatibility')
 
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      require('@shelex/cypress-allure-plugin/writer')(on, config)
+      allureCypress(on, config)
       on('task', {
         dbQuery: (query) => cyPostgres(query.query, query.connection),
       })
