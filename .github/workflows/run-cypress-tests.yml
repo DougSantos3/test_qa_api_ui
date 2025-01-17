@@ -8,16 +8,17 @@ on:
         required: true
         type: choice
         options:
-          - ui
           - api
+          - ui
+        default: api
       platform:
         description: 'Select the platform to run tests (only for UI tests)'
         required: false
         type: choice
         options:
           - linux
-          - mac
-          - windows
+          - mac(disabled)
+          - windows(disabled)
         default: linux
 
 jobs:
