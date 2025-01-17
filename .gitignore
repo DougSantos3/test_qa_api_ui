@@ -8,6 +8,7 @@ cypress/support/component-index.*
 .idea/*
 .tool-versions
 pnpm-lock.yaml
+<<<<<<< HEAD
 act
 *.html
 *.csv
@@ -18,3 +19,16 @@ act
 app.js
 index.js
 *.json
+=======
+*.png
+app.js
+index.js
+*.json
+*.csv
+*.html
+*.css
+*.ico
+*.log
+act
+*.txt
+>>>>>>> c08c543 (chore:  add archive gitignore and remove dependencie in package.json)
