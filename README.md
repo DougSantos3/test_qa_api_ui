@@ -69,6 +69,8 @@ colletion_postman/myCollection.postman_collection.json
 <br>
 colletion_postman/postman_environment.json
 
+<br>
+
 ## Project that was tested
 
 To learn more repository serveRest:
@@ -77,7 +79,9 @@ To learn more repository serveRest:
 - Project tested API [Serverest](https://serverest.dev/#/)
 - [Repository ServeRest](https://github.com/ServeRest/ServeRest)
 
+
 <br>
 
 ## More information
+
 If you need to use automation to access the development database in scenarios where, after the automated test, the saved record needs to be deleted to avoid accumulating entries (since the automation handles this), or if you need to perform a SELECT to retrieve data for testing purposes or other scenarios, the project is already preconfigured to access the database. It even includes examples of queries within the commands file located at cypress/support/commands/database-commands.js.
