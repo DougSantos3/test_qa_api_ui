@@ -23,7 +23,6 @@ You need to download the packages:
 v20.18.0 lts
 ```
 
-
 ```bash
 # npm version: 11.0.0
 # Download dependencies
@@ -42,6 +41,25 @@ npm run test:ui
 # Run tests api
 npm run test:api
 ```
+<br>
+
+## Tests Overview
+
+### API Tests
+
+- Updating the user's email
+- Shopping cart registration
+- Removing a product
+- Searching for a product
+- Searching for a user (This last one includes a test for user search and also validates the API contract within the same test)
+
+### UI Tests
+
+- Product creation
+- User creation
+- Login
+
+<br>
 
 ## Learn More
 
@@ -51,10 +69,15 @@ colletion_postman/myCollection.postman_collection.json
 <br>
 colletion_postman/postman_environment.json
 
-## Learn More
+## Project that was tested
 
 To learn more repository serveRest:
 
 - Project tested UI [Serverest](https://front.serverest.dev/login)
 - Project tested API [Serverest](https://serverest.dev/#/)
 - [Repository ServeRest](https://github.com/ServeRest/ServeRest)
+
+<br>
+
+## More information
+If you need to use automation to access the development database in scenarios where, after the automated test, the saved record needs to be deleted to avoid accumulating entries (since the automation handles this), or if you need to perform a SELECT to retrieve data for testing purposes or other scenarios, the project is already preconfigured to access the database. It even includes examples of queries within the commands file located at cypress/support/commands/database-commands.js.
