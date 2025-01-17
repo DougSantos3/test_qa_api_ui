@@ -18,21 +18,13 @@ on:
           - linux
           - mac
           - windows
+        default: linux
 
 jobs:
   cypress-tests:
-    runs-on: ubuntu-latest
+    runs-on: ${{ github.event.inputs.test_type == 'ui' && (github.event.inputs.platform == 'linux' && 'ubuntu-latest' || github.event.inputs.platform == 'mac' && 'macos-latest' || github.event.inputs.platform == 'windows' && 'windows-latest') || github.event.inputs.test_type == 'api' && 'ubuntu-latest' }}
 
     steps:
-      - name: Validate inputs
-        run: |
-          if [ "${{ github.event.inputs.test_type }}" == "api" ] && [ -n "${{ github.event.inputs.platform }}" ]; then
-            echo "Platform selection is not required for API tests. Ignoring platform input."
-          elif [ "${{ github.event.inputs.test_type }}" == "ui" ] && [ -z "${{ github.event.inputs.platform }}" ]; then
-            echo "Platform selection is required for UI tests."
-            exit 1
-          fi
-
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -45,29 +37,20 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
+      - name: Run selected tests
         run: |
-          if [ "${{ github.event.inputs.test_type }}" == "api" ]; then
-            echo "Running API tests on Linux"
+          if [ "${{ github.event.inputs.test_type }}" == "ui" ]; then
+            echo "Running UI tests on ${{ github.event.inputs.platform }}"
+            npm run test:ui
+          elif [ "${{ github.event.inputs.test_type }}" == "api" ]; then
+            echo "Running API tests"
             npm run test:api
-          elif [ "${{ github.event.inputs.test_type }}" == "ui" ]; then
-            if [ "${{ github.event.inputs.platform }}" == "linux" ]; then
-              echo "Running UI tests on Linux"
-              npm run test:ui
-            elif [ "${{ github.event.inputs.platform }}" == "mac" ] || [ "${{ github.event.inputs.platform }}" == "windows" ]; then
-              echo "Running UI tests on BrowserStack for ${{ github.event.inputs.platform }}"
-              npm run browserstack:ui
-            else
-              echo "Unsupported platform for UI tests"
-              exit 1
-            fi
           else
             echo "Unknown test type selected"
             exit 1
           fi
 
       - name: Generate Allure report
-        if: ${{ github.event.inputs.test_type == 'api' || github.event.inputs.platform == 'linux' }}
         run: |
           npm run allure:generate
           npm run allure:open
