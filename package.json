@@ -15,16 +15,16 @@
   "author": "Douglas Martins Santos",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^9.3.0",
     "@shelex/cypress-allure-plugin": "^2.40.2",
     "allure-commandline": "^2.32.0",
     "allure-cypress": "^3.0.9",
     "cypress": "^13.17.0",
-    "cypress-xpath": "^2.0.1",
-    "prettier": "^3.4.2",
-    "@faker-js/faker": "^9.3.0",
     "cypress-postgres-10v-compatibility": "^1.0.0",
+    "cypress-xpath": "^2.0.1",
     "joi": "^17.13.3",
     "pg": "^8.13.1",
-    "pg-promise": "^11.10.2"
+    "pg-promise": "^11.10.2",
+    "prettier": "^3.4.2"
   }
 }
