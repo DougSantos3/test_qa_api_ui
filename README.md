@@ -35,15 +35,15 @@ Run tests:
 # Open dashboard cypress
 npm run cy:open
 
-# Run tests ui
-npm run test:ui
+# Run tests ui env qa
+npm run test:ui:qa
 
-# Run tests api
-npm run test:api
+# Run tests api env qa
+npm run test:api:qa
 
-# After run test, create report. Use this command if you need to save the report for future reference or for sharing it with colleagues.
+# After run test, create report. Use this command if you need to save the report for future reference or for sharing it with colleagues. With the error image of the failed test case attached to the report
 npm run report 
-# Or use this command if you need to view the report for yourself and do not need to save it.
+# Or use this command if you need to view the report for yourself and do not need to save it.  With the error image of the failed test case attached to the report
 npm run server
 
 ```
