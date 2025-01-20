@@ -11,6 +11,9 @@ on:
           - api
           - ui
 
+permissions:
+  contents: write
+
 jobs:
   cypress-tests:
     runs-on: ubuntu-latest
