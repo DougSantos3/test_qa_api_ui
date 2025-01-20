@@ -66,3 +66,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
+          allow_empty_commit: true
+          force_orphan: true
