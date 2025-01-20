@@ -40,6 +40,12 @@ npm run test:ui
 
 # Run tests api
 npm run test:api
+
+# After run test, create report. Use this command if you need to save the report for future reference or for sharing it with colleagues.
+npm run report 
+# Or use this command if you need to view the report for yourself and do not need to save it.
+npm run server
+
 ```
 <br>
 
