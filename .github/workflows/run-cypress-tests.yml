@@ -42,7 +42,6 @@ jobs:
       - name: Generate Allure report
         run: |
           npm run allure:generate
-          npm run allure:open
 
       - name: Load test report history
         uses: actions/checkout@v3
@@ -67,4 +66,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
-

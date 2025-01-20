@@ -11,7 +11,8 @@
     "test:api:qa": "cross-env NODE_ENV=qa TEST_TYPE=api cypress run --spec './cypress/e2e/api/tests/*.cy.js'",
     "test:ui:prod": "cross-env NODE_ENV=prod TEST_TYPE=ui cypress run --spec './cypress/e2e/ui/tests/*.cy.js'",
     "test:api:prod": "cross-env NODE_ENV=prod TEST_TYPE=api cypress run --spec './cypress/e2e/api/tests/*.cy.js'",
-    "report": "allure generate allure-results --clean && allure open",
+    "allure:generate": "allure generate allure-results --clean",
+    "view:report": "allure generate allure-results --clean && allure open",
     "server": "allure serve"
   },
   "keywords": [],
