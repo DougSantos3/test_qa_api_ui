@@ -46,6 +46,11 @@ npm run view:report
 # Or use this command if you need to view the report for yourself and do not need to save it.  With the error image of the failed test case attached to the report
 npm run server
 
+# After running a test once, you can use the command npm run allure:history. Then, when you run the tests again, any new or differing results will be added, and trends will appear within the Allure report. This is beneficial because it allows you to view a graph displaying multiple executions, including both failed and successful tests.
+npm run allure:history
+
+# Delete alura folders and screenshots
+npm run allure:clear
 ```
 <br>
 
