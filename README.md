@@ -42,7 +42,7 @@ npm run test:ui:qa
 npm run test:api:qa
 
 # After run test, create report. Use this command if you need to save the report for future reference or for sharing it with colleagues. With the error image of the failed test case attached to the report
-npm run report 
+npm run view:report
 # Or use this command if you need to view the report for yourself and do not need to save it.  With the error image of the failed test case attached to the report
 npm run server
 
