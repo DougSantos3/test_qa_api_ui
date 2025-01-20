@@ -31,9 +31,9 @@ jobs:
       - name: Run selected tests
         run: |
           if [ "${{ github.event.inputs.test_type }}" == "ui" ]; then
-            npm run test:ui
+            npm run test:ui:qa
           elif [ "${{ github.event.inputs.test_type }}" == "api" ]; then
-            npm run test:api
+            npm run test:api:qa
           else
             echo "Unknown test type selected"
             exit 1

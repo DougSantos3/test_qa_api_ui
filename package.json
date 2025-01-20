@@ -5,11 +5,15 @@
   "main": "cypress.config.js",
   "scripts": {
     "cy:open": "cypress open",
-    "test:api": "cypress run --spec './cypress/e2e/api/tests/**/*.cy.js' && allure generate allure-results --clean && allure open",
-    "test:ui": "cypress run --spec './cypress/e2e/ui/tests/*.cy.js' && allure generate allure-results --clean && allure open",
+    "test:ui:dev": "NODE_ENV=dev TEST_TYPE=ui cypress run --spec './cypress/e2e/ui/tests/*.cy.js' && allure generate allure-results --clean && allure open",
+    "test:api:dev": "NODE_ENV=dev TEST_TYPE=api cypress run --spec './cypress/e2e/api/tests/*.cy.js' && allure generate allure-results --clean && allure open",
+    "test:ui:qa": "NODE_ENV=qa TEST_TYPE=ui cypress run --spec './cypress/e2e/ui/tests/*.cy.js' && allure generate allure-results --clean && allure open",
+    "test:api:qa": "NODE_ENV=qa TEST_TYPE=api cypress run --spec './cypress/e2e/api/tests/*.cy.js' && allure generate allure-results --clean && allure open",
+    "test:ui:prod": "NODE_ENV=prod TEST_TYPE=ui cypress run --spec './cypress/e2e/ui/tests/*.cy.js' && allure generate allure-results --clean && allure open",
+    "test:api:prod": "NODE_ENV=prod TEST_TYPE=api cypress run --spec './cypress/e2e/api/tests/*.cy.js' && allure generate allure-results --clean && allure open",
     "test:allure": "cypress run && allure generate allure-results --clean && allure open",
-    "allure": "allure-commandline",
-    "report": "allure generate allure-results --clean && allure open"
+    "report": "allure generate allure-results --clean && allure open",
+    "server": "allure serve"
   },
   "keywords": [],
   "author": "Douglas Martins Santos",
