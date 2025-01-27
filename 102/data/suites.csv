@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Jan 27 20:04:32 GMT 2025","Mon Jan 27 20:04:33 GMT 2025","379","Testing user creation flow, login, email change","","","","","Change email",""
+"passed","Mon Jan 27 20:04:51 GMT 2025","Mon Jan 27 20:04:52 GMT 2025","331","Testing user creation flow, login, email change and Check product","","","","","Create a product and verify that the product was created",""
+"passed","Mon Jan 27 20:04:37 GMT 2025","Mon Jan 27 20:04:38 GMT 2025","435","Testing user creation flow, login, create cart","","","","","Create cart",""
+"passed","Mon Jan 27 20:04:47 GMT 2025","Mon Jan 27 20:04:47 GMT 2025","115","Contract Test for empty user listing","","","","","List of users",""
+"passed","Mon Jan 27 20:04:42 GMT 2025","Mon Jan 27 20:04:43 GMT 2025","444","Testing user creation flow, login, delete product","","","","","create a product and delete it",""
