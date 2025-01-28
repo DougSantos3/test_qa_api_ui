@@ -15,7 +15,8 @@ on:
         required: false
         type: choice
         options:
-          - CHROME if test type is UI if API does not use browser
+          - API does not use browser
+          - chrome
           - firefox
           - edge
         default: chrome
