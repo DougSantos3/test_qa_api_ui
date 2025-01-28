@@ -19,7 +19,7 @@ on:
           - chrome
           - firefox
           - edge
-        default: chrome
+        default: API does not use browser
 
 permissions:
   contents: write
