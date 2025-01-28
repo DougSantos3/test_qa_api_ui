@@ -3,6 +3,11 @@ name: Run Cypress Tests
 on:
   workflow_dispatch:
     inputs:
+      branch:
+        description: 'Select the branch to run tests on'
+        required: true
+        type: string
+        default: 'main'
       test_type:
         description: 'Select the test type to run'
         required: true
@@ -10,6 +15,15 @@ on:
         options:
           - api
           - ui
+      browser:
+        description: 'Select the browser for UI tests'
+        required: false
+        type: choice
+        options:
+          - chrome
+          - firefox
+          - edge
+        default: chrome
 
 permissions:
   contents: write
@@ -21,6 +35,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -34,9 +50,9 @@ jobs:
       - name: Run selected tests
         run: |
           if [ "${{ github.event.inputs.test_type }}" == "ui" ]; then
-            npm run test:ui:qa
+            npm run test:run --env NODE_ENV=qa TEST_TYPE=ui BROWSER=${{ github.event.inputs.browser }}
           elif [ "${{ github.event.inputs.test_type }}" == "api" ]; then
-            npm run test:api:qa
+            npm run test:run --env NODE_ENV=qa TEST_TYPE=api
           else
             echo "Unknown test type selected"
             exit 1
