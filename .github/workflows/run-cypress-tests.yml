@@ -3,11 +3,6 @@ name: Run Cypress Tests
 on:
   workflow_dispatch:
     inputs:
-      branch:
-        description: 'Select the branch to run tests on'
-        required: true
-        type: string
-        default: 'main'
       test_type:
         description: 'Select the test type to run'
         required: true
@@ -23,7 +18,7 @@ on:
           - chrome
           - firefox
           - edge
-        default: chrome
+        default: CHROME if test type is UI if API does not use browser
 
 permissions:
   contents: write
