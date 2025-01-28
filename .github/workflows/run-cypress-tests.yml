@@ -15,10 +15,10 @@ on:
         required: false
         type: choice
         options:
-          - chrome
+          - CHROME if test type is UI if API does not use browser
           - firefox
           - edge
-        default: CHROME if test type is UI if API does not use browser
+        default: chrome
 
 permissions:
   contents: write
