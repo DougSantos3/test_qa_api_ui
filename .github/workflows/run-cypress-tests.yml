@@ -15,11 +15,11 @@ on:
         required: false
         type: choice
         options:
-          - API does not use browser
+          - API TESTS does not use BROWSER
           - chrome
           - firefox
           - edge
-        default: API does not use browser
+        default: API TESTS does not use BROWSER
 
 permissions:
   contents: write
