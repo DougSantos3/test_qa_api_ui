@@ -8,16 +8,16 @@ const env = process.env.NODE_ENV || 'prod'
 function getBaseUrls() {
   return {
     dev: {
-      ui: '',
-      api: '',
+      ui: 'https://front.serverest.dev',
+      api: 'https://serverest.dev/',
     },
     qa: {
       ui: '',
       api: '',
     },
     prod: {
-      ui: 'https://front.serverest.dev',
-      api: 'https://serverest.dev/',
+      ui: '',
+      api: '',
     },
   }[env]
 }
