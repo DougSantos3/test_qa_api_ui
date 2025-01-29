@@ -3,7 +3,7 @@ const { allureCypress } = require('allure-cypress/reporter')
 const cyPostgres = require('cypress-postgres-10v-compatibility')
 const os = require('os')
 
-const env = process.env.NODE_ENV || 'dev'
+const env = process.env.NODE_ENV || 'qa'
 
 function getBaseUrls() {
   return {
