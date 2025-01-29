@@ -27,13 +27,6 @@ const baseUrls = getBaseUrls()
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      let browserName = 'unknown'
-
-      on('before:browser:launch', (browser = {}, launchOptions) => {
-        browserName = browser.name
-        return launchOptions
-      })
-
       allureCypress(on, config, {
         environmentInfo: {
           os_platform: os.platform(),
@@ -41,7 +34,6 @@ module.exports = defineConfig({
           os_version: os.version(),
           node_version: process.version,
           environment: env,
-          browser: browserName,
         },
       })
 

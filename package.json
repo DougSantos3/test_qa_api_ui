@@ -4,8 +4,8 @@
   "description": "Test qa api and ui",
   "main": "cypress.config.js",
   "scripts": {
-    "test:run": "cross-env NODE_ENV=$NODE_ENV TEST_TYPE=$TEST_TYPE BROWSER=$BROWSER cypress run --spec \"./cypress/e2e/${TEST_TYPE}/tests/*.cy.js\" --browser ${BROWSER:-chrome} --env allure=true",
     "test:open": "cypress open --browser ${BROWSER:-chrome}",
+    "test:run": "cross-env NODE_ENV=$NODE_ENV TEST_TYPE=$TEST_TYPE BROWSER=$BROWSER cypress run --spec \"./cypress/e2e/${TEST_TYPE}/tests/*.cy.js\" --browser ${BROWSER:-electron} --env allure=true",
     "allure:history": "mv -f allure-report/history allure-results/history && rm -r allure-report || true",
     "allure:generate": "allure generate allure-results --clean",
     "view:report": "allure generate allure-results --clean && allure open",
