@@ -1,0 +1,1 @@
+[{"values":["linux"],"name":"os_platform"},{"values":["6.8.0-1020-azure"],"name":"os_release"},{"values":["#23-Ubuntu SMP Mon Dec  9 16:58:58 UTC 2024"],"name":"os_version"},{"values":["v20.18.0"],"name":"node_version"},{"values":["qa"],"name":"environment"},{"values":["unknownURL=https://DougSantos3.github.io/test_qa_api_ui"],"name":"browser"}]
