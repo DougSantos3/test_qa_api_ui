@@ -27,6 +27,15 @@ const baseUrls = getBaseUrls()
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
+      let browserName = null 
+
+      on('before:browser:launch', (browser = {}, launchOptions) => {
+        browserName = browser.name || 'electron'
+        return launchOptions
+      })
+
+      const isApiTest = config.baseUrl === baseUrls.api
+
       allureCypress(on, config, {
         environmentInfo: {
           os_platform: os.platform(),
@@ -34,7 +43,7 @@ module.exports = defineConfig({
           os_version: os.version(),
           node_version: process.version,
           environment: env,
-          browser: 'Electron___',
+          browser: isApiTest ? undefined : browserName,
         },
       })
 
