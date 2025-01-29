@@ -15,11 +15,11 @@ on:
         required: false
         type: choice
         options:
-          - API TESTS does not use BROWSER
+          - Never use the browser
           - chrome
           - firefox
           - edge
-        default: API TESTS does not use BROWSER
+        default: Never use the browser
 
 permissions:
   contents: write
@@ -46,9 +46,9 @@ jobs:
       - name: Run selected tests
         run: |
           if [ "${{ github.event.inputs.test_type }}" == "ui" ]; then
-            npm run test:run --env NODE_ENV=qa TEST_TYPE=ui BROWSER=${{ github.event.inputs.browser }}
+            TEST_TYPE=ui BROWSER=${{ github.event.inputs.browser }} npm run test:run
           elif [ "${{ github.event.inputs.test_type }}" == "api" ]; then
-            npm run test:run --env NODE_ENV=qa TEST_TYPE=api
+            TEST_TYPE=api npm run test:run
           else
             echo "Unknown test type selected"
             exit 1
