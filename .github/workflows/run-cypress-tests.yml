@@ -16,9 +16,10 @@ on:
         type: choice
         options:
           - API never uses the browser
-          - chrome
+          - electron
           - firefox
           - edge
+          - chrome
         default: API never uses the browser
 
 permissions:
@@ -52,11 +53,9 @@ jobs:
           else
             echo "Unknown test type selected"
             exit 1
-          fi
 
       - name: Generate Allure report
-        run: |
-          npm run allure:generate
+        run: npm run allure:generate
 
       - name: Load test report history
         uses: actions/checkout@v3
