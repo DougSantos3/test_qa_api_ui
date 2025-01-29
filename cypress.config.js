@@ -5,6 +5,10 @@ const os = require('os')
 
 const env = process.env.NODE_ENV || 'qa'
 
+function removeUrlSuffix(text) {
+  return text.replace(/URL=.*/, '')
+}
+
 function getBaseUrls() {
   return {
     dev: {
@@ -27,7 +31,7 @@ const baseUrls = getBaseUrls()
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      let browserName = null 
+      let browserName = null
 
       on('before:browser:launch', (browser = {}, launchOptions) => {
         browserName = browser.name || 'electron'
@@ -43,7 +47,7 @@ module.exports = defineConfig({
           os_version: os.version(),
           node_version: process.version,
           environment: env,
-          browser: isApiTest ? undefined : browserName,
+          browser: isApiTest ? undefined : removeUrlSuffix(browserName),
         },
       })
 
