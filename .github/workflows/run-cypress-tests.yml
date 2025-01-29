@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -34,17 +36,16 @@ jobs:
       - name: Run selected tests
         run: |
           if [ "${{ github.event.inputs.test_type }}" == "ui" ]; then
-            npm run test:ui:qa
+            TEST_TYPE=ui npm run test:run
           elif [ "${{ github.event.inputs.test_type }}" == "api" ]; then
-            npm run test:api:qa
+            TEST_TYPE=api npm run test:run
           else
             echo "Unknown test type selected"
             exit 1
           fi
 
       - name: Generate Allure report
-        run: |
-          npm run allure:generate
+        run: npm run allure:generate
 
       - name: Load test report history
         uses: actions/checkout@v3

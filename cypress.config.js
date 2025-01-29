@@ -3,30 +3,43 @@ const { allureCypress } = require('allure-cypress/reporter')
 const cyPostgres = require('cypress-postgres-10v-compatibility')
 const os = require('os')
 
+const env = process.env.NODE_ENV || 'qa'
+
+function removeUrlSuffix(text) {
+  return text.replace(/URL=.*/, '')
+}
+
 function getBaseUrls() {
-  const env = process.env.NODE_ENV || 'qa'
   return {
     dev: {
-      ui: '',
-      api: '',
+      ui: 'https://example.url.dev',
+      api: 'https://example.url.dev',
     },
     qa: {
       ui: 'https://front.serverest.dev',
       api: 'https://serverest.dev/',
     },
     prod: {
-      ui: '',
-      api: '',
+      ui: 'https://example.url.prod',
+      api: 'https://example.url.prod',
     },
   }[env]
 }
 
-const env = process.env.NODE_ENV || 'qa'
 const baseUrls = getBaseUrls()
 
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
+      let browserName = null
+
+      on('before:browser:launch', (browser = {}, launchOptions) => {
+        browserName = browser.name || 'electron'
+        return launchOptions
+      })
+
+      const isApiTest = config.baseUrl === baseUrls.api
+
       allureCypress(on, config, {
         environmentInfo: {
           os_platform: os.platform(),
@@ -34,11 +47,14 @@ module.exports = defineConfig({
           os_version: os.version(),
           node_version: process.version,
           environment: env,
+          browser: isApiTest ? undefined : removeUrlSuffix(browserName),
         },
       })
+
       on('task', {
         dbQuery: (query) => cyPostgres(query.query, query.connection),
       })
+
       return config
     },
     baseUrl: baseUrls.api,
