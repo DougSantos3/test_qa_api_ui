@@ -33,6 +33,8 @@ module.exports = defineConfig({
           os_release: os.release(),
           os_version: os.version(),
           node_version: process.version,
+          environment: env,
+          browser: 'Electron___',
         },
       })
 
