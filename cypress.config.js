@@ -4,7 +4,7 @@ const cyPostgres = require('cypress-postgres-10v-compatibility')
 const os = require('os')
 
 function getBaseUrls() {
-  const env = process.env.NODE_ENV || 'qa'
+  const env = process.env.NODE_ENV || 'prod'
   return {
     dev: {
       ui: '',
@@ -21,7 +21,6 @@ function getBaseUrls() {
   }[env]
 }
 
-const env = process.env.NODE_ENV || 'qa'
 const baseUrls = getBaseUrls()
 
 module.exports = defineConfig({
