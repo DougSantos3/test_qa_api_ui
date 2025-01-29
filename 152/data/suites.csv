@@ -1,4 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Wed Jan 29 12:55:34 GMT 2025","Wed Jan 29 12:55:36 GMT 2025","2857","Products","","","","","Name is required",""
-"passed","Wed Jan 29 12:55:37 GMT 2025","Wed Jan 29 12:55:39 GMT 2025","2653","Products","","","","","Description cannot be blank",""
-"passed","Wed Jan 29 12:55:29 GMT 2025","Wed Jan 29 12:55:34 GMT 2025","4519","Products","","","","","You must authenticate and register a product",""
