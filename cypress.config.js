@@ -27,6 +27,19 @@ const baseUrls = getBaseUrls()
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
+      
+      /* Todo: Today it works only with Electron. I need to understand why it works with 
+      Chrome and Edge without breaking in the second scenario, but it executes the third one, 
+      and Firefox breaks in the second for the full test execution. Also, why doesn't the 
+      browser appear in the Allure report?
+      
+      let browserName = 'unknown'
+
+      on('before:browser:launch', (browser = {}, launchOptions) => {
+        browserName = browser.name
+        return launchOptions
+      })  */
+
       allureCypress(on, config, {
         environmentInfo: {
           os_platform: os.platform(),
@@ -34,6 +47,7 @@ module.exports = defineConfig({
           os_version: os.version(),
           node_version: process.version,
           environment: env,
+          /* browser: browserName, */
         },
       })
 
