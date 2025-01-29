@@ -8,12 +8,12 @@ const env = process.env.NODE_ENV || 'dev'
 function getBaseUrls() {
   return {
     dev: {
-      ui: 'https://front.serverest.dev',
-      api: 'https://serverest.dev/',
-    },
-    qa: {
       ui: '',
       api: '',
+    },
+    qa: {
+      ui: 'https://front.serverest.dev',
+      api: 'https://serverest.dev/',
     },
     prod: {
       ui: '',
