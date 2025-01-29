@@ -11,12 +11,12 @@ function getBaseUrls() {
       api: '',
     },
     qa: {
-      ui: 'https://front.serverest.dev',
-      api: 'https://serverest.dev/',
-    },
-    prod: {
       ui: '',
       api: '',
+    },
+    prod: {
+      ui: 'https://front.serverest.dev',
+      api: 'https://serverest.dev/',
     },
   }[env]
 }
