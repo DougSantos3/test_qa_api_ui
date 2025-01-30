@@ -72,6 +72,35 @@ npm run allure:clear
 
 <br>
 
+
+### Run GitHub Action
+`Api`
+
+<p align="center">
+  <img alt="run scenarios api" src=".github/api.png" width="100%">
+</p>
+
+`Ui`
+<p align="center">
+  <img alt="run scenarios ui" src=".github/ui.png" width="100%">
+</p>
+
+
+#### After executing the scenarios, the report is generated in pages-build-deployment. It may happen that between one execution and another, GitHub takes some time to process the last execution. Please wait for a while.
+
+<p align="center">
+  <img alt="View report allure part 1" src=".github/report_part_1.png" width="100%">
+</p>
+
+<p align="center">
+  <img alt="View report allure part 2" src=".github/report_part_2.png" width="100%">
+</p>
+
+<p align="center">
+  <img alt="report" src=".github/report.png" width="100%">
+</p>
+
+
 ## Learn More
 
 From the test application I have my postman collection with more automated scripts than the one that comes in the serverRest repository. Mine is more up to date:
