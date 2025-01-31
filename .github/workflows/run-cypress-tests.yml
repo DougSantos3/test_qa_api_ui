@@ -16,10 +16,10 @@ on:
         type: choice
         options:
           - API never uses the browser
-          - electron
           - chrome
           - edge
           - firefox
+          - electron
         default: API never uses the browser
 
 permissions:

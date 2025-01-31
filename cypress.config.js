@@ -61,7 +61,7 @@ module.exports = defineConfig({
     env: {
       baseUrlFront: baseUrls.ui,
     },
-    video: true,
+    video: false,
     retries: {
       runMode: 0,
       openMode: 0,
