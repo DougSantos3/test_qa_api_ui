@@ -1,29 +1,20 @@
-name: Run UI Tests
+name: Run Cypress API Tests
 
 on:
   workflow_dispatch:
-    inputs:
-      browser:
-        description: 'Select the browser for UI tests'
-        required: true
-        type: choice
-        options:
-          - chrome
-          - edge
-          - firefox
-          - electron
-        default: chrome
 
 permissions:
   contents: write
 
 jobs:
-  cypress-ui-tests:
+  cypress-api-tests:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -34,8 +25,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run UI tests
-        run: BROWSER=${{ github.event.inputs.browser }} npm run test:run
+      - name: Run API tests
+        run: |
+          TEST_TYPE=api npm run test:run
 
       - name: Generate Allure report
         run: npm run allure:generate
