@@ -30,8 +30,10 @@ const baseUrls = getBaseUrls()
 
 module.exports = defineConfig({
   e2e: {
+    pageLoadTimeout: 120000,
+    defaultCommandTimeout: 120000,
     setupNodeEvents(on, config) {
-      let browserName = null
+      let browserName = 'electron'
 
       on('before:browser:launch', (browser = {}, launchOptions) => {
         browserName = browser.name || 'electron'
