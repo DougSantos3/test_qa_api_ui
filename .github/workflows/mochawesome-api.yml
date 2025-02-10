@@ -1,4 +1,4 @@
-name: Run API Tests with Mochawesome
+name: Run API with Mochawesome
 
 on:
   workflow_dispatch:
@@ -31,6 +31,9 @@ jobs:
 
       - name: Generate Mochawesome report
         run: npm run mochawesome:generate
+
+      - name: List files
+        run: ls -R mochawesome-report
 
       - name: Load test report history
         uses: actions/checkout@v3

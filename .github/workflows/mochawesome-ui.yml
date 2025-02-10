@@ -1,4 +1,4 @@
-name: Run UI Tests with Mochawesome
+name: Run UI with Mochawesome
 
 on:
   workflow_dispatch:
@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run UI tests with Mochawesome
+      - name: Run UI tests
         run: BROWSER=${{ github.event.inputs.browser }} npm run test:ui-mochawesome
 
       - name: Merge Mochawesome reports
