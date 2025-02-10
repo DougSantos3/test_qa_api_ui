@@ -5,14 +5,14 @@
   "main": "cypress.config.js",
   "scripts": {
     "open": "cypress open --browser ${BROWSER:-chrome}",
-    "test:ui-allure": "cross-env NODE_ENV=$NODE_ENV BROWSER=$BROWSER cypress run --spec \"./cypress/e2e/ui/tests/*.cy.js\" --env allure=true",
+    "test:ui-allure": "cross-env NODE_ENV=$NODE_ENV cypress run --browser ${BROWSER:-electron} --spec \"./cypress/e2e/ui/tests/*.cy.js\" --env allure=true",
     "test:api-allure": "cross-env NODE_ENV=$NODE_ENV cypress run  --spec \"./cypress/e2e/api/tests/*.cy.js\" --env allure=true",
     "allure:generate": "allure generate allure-results --clean",
     "allure:history": "mv -f allure-report/history allure-results/history && rm -r allure-report || true",
     "alure:view:report": "allure generate allure-results --clean && allure open",
     "allure:clear": "rm -r allure-results/ allure-report cypress/screenshots || true",
     "allure:server": "allure serve",
-    "test:ui-mochawesome": "cross-env NODE_ENV=$NODE_ENV cypress run BROWSER=$BROWSER cypress run --spec \"./cypress/e2e/ui/tests/*.cy.js\" --reporter mochawesome --reporter-options reportDir=mochawesome-report,overwrite=false,html=true,json=true",
+    "test:ui-mochawesome": "cross-env NODE_ENV=$NODE_ENV cypress run --browser ${BROWSER:-electron} --spec \"./cypress/e2e/ui/tests/*.cy.js\" --reporter mochawesome --reporter-options reportDir=mochawesome-report,overwrite=false,html=true,json=true",
     "test:api-mochawesome": "cross-env NODE_ENV=$NODE_ENV cypress run  --spec \"./cypress/e2e/api/tests/*.cy.js\" --reporter mochawesome --reporter-options reportDir=mochawesome-report,overwrite=false,html=true,json=true",
     "mochawesome:merge": "mochawesome-merge mochawesome-report/*.json -o mochawesome-report/merged.json",
     "mochawesome:generate": "marge mochawesome-report/merged.json -o mochawesome-report"
