@@ -3,12 +3,6 @@ name: Run UI Tests with Mochawesome
 on:
   workflow_dispatch:
     inputs:
-      test_type:
-        description: 'Select the test type to run'
-        required: true
-        type: choice
-        options:
-          - ui
       browser:
         description: 'Select the browser to run the tests'
         required: true

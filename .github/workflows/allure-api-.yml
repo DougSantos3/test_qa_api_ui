@@ -2,14 +2,6 @@ name: Run API Tests with Allure
 
 on:
   workflow_dispatch:
-    inputs:
-      test_type:
-        description: 'Select the test type to run'
-        required: true
-        type: choice
-        options:
-          - api
-
 permissions:
   contents: write
 
