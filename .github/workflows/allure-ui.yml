@@ -1,4 +1,4 @@
-name: Run UI Tests with Allure Report
+name: Run UI with Allure
 
 on:
   workflow_dispatch:

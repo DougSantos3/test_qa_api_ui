@@ -1,4 +1,4 @@
-name: Run API Tests with Allure
+name: Run API with Allure
 
 on:
   workflow_dispatch:
