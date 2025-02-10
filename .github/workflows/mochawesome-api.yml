@@ -1,13 +1,20 @@
-name: Run Cypress API Tests with Mochawesome
+name: Run API Tests with Mochawesome
 
 on:
   workflow_dispatch:
+    inputs:
+      test_type:
+        description: 'Select the test type to run'
+        required: true
+        type: choice
+        options:
+          - api
 
 permissions:
   contents: write
 
 jobs:
-  cypress-api-tests:
+  api-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,16 +31,34 @@ jobs:
         run: npm install
 
       - name: Run API tests with Mochawesome
-        run: npm run test:api-mochawesome
+        run: |
+          if [ "${{ github.event.inputs.test_type }}" == "api" ]; then
+            npm run test:api-mochawesome
+          else
+            echo "Unknown test type selected"
+            exit 1
+          fi
 
-      - name: Merge Mochawesome JSON Reports
+      - name: Merge Mochawesome reports
         run: npm run mochawesome:merge
 
-      - name: Generate Mochawesome HTML Report
+      - name: Generate Mochawesome report
         run: npm run mochawesome:generate
 
-      - name: Upload Mochawesome Report
-        uses: actions/upload-artifact@v4
+      - name: Load test report history
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
         with:
-          name: mochawesome-report-api
-          path: mochawesome-report
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Publish Mochawesome report
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: mochawesome-report
+          allow_empty_commit: true
+          force_orphan: true
