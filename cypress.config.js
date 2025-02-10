@@ -5,10 +5,6 @@ const os = require('os')
 
 const env = process.env.NODE_ENV || 'qa'
 
-function removeUrlSuffix(text) {
-  return text.replace(/URL=.*/, '')
-}
-
 function getBaseUrls() {
   return {
     dev: {
@@ -30,11 +26,7 @@ const baseUrls = getBaseUrls()
 
 module.exports = defineConfig({
   e2e: {
-    pageLoadTimeout: 120000,
-    defaultCommandTimeout: 120000,
     setupNodeEvents(on, config) {
-      const isApiTest = config.baseUrl === baseUrls.api;
-    
       allureCypress(on, config, {
         environmentInfo: {
           os_platform: os.platform(),
@@ -42,9 +34,9 @@ module.exports = defineConfig({
           os_version: os.version(),
           node_version: process.version,
           environment: env,
-          browser: isApiTest ? undefined : removeUrlSuffix(config.browser || 'electron'),
+          browser: config.browser,
         },
-      });
+      })
 
       on('task', {
         dbQuery: (query) => cyPostgres(query.query, query.connection),
