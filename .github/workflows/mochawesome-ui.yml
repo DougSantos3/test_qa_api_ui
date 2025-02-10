@@ -34,13 +34,7 @@ jobs:
         run: npm install
 
       - name: Run UI tests with Mochawesome
-        run: |
-          if [ "${{ github.event.inputs.test_type }}" == "ui" ]; then
-            BROWSER=${{ github.event.inputs.browser }} npm run test:ui-mochawesome
-          else
-            echo "Unknown test type selected"
-            exit 1
-          fi
+        run: BROWSER=${{ github.event.inputs.browser }} npm run test:ui-mochawesome
 
       - name: Merge Mochawesome reports
         run: npm run mochawesome:merge
