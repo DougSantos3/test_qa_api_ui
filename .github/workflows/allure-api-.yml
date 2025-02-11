@@ -1,18 +1,20 @@
 name: Run API with Allure
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:    
 
 permissions:
   contents: write
 
 jobs:
-  cypress-api-tests:
+  cypress-tests:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
