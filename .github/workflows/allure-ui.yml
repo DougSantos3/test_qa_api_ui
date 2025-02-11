@@ -35,5 +35,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run selected tests
+      - name: Run UI tests
         run: BROWSER=${{ github.event.inputs.browser }} npm run test:ui-allure

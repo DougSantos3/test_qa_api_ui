@@ -33,5 +33,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run API tests with Mochawesome
-        run: npm run test:ui-mochawesome
+      - name: Run UI Test
+        run: BROWSER=${{ github.event.inputs.browser }} npm run test:ui-mochawesome

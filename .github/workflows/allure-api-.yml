@@ -25,5 +25,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run selected tests
+      - name: Run API tests
         run: TEST_TYPE=ui npm run test:api-allure
