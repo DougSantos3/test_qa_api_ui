@@ -34,4 +34,4 @@ jobs:
         run: npm install
 
       - name: Run API tests with Mochawesome
-        run: npm run test:api-mochawesome
+        run: npm run test:ui-mochawesome
