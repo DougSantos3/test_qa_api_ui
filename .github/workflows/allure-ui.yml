@@ -36,8 +36,8 @@ jobs:
         run: npm install
 
       - name: Run selected tests
-        run: TEST_TYPE=ui pm run test:ui-allure
-          
+        run: BROWSER=${{ github.event.inputs.browser }} npm run test:ui-allure
+
       - name: Generate Allure report
         run: npm run allure:generate
 
@@ -58,7 +58,7 @@ jobs:
           allure_results: allure-results
 
       - name: Publish test report
-      
+
         uses: peaceiris/actions-gh-pages@v3
         if: always()
         with:

@@ -1,4 +1,4 @@
-name: Run API with Mochawesome
+name: Run API Mochawesome
 
 on:
   workflow_dispatch:
@@ -23,14 +23,17 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run API tests with Allure
-        run: npm run test:api-allure
+      - name: Run API tests
+        run: npm run test:api-mochawesome
 
-      - name: Generate Allure report
-        run: npm run allure:generate
+      - name: Merge Mochawesome JSON Reports
+        run: npm run mochawesome:merge
 
-      - name: Upload Allure Report
+      - name: Generate Mochawesome HTML Report
+        run: npm run mochawesome:generate
+
+      - name: Upload Mochawesome Report
         uses: actions/upload-artifact@v4
         with:
-          name: allure-report-api
-          path: allure-report
+          name: mochawesome-report-api
+          path: mochawesome-report

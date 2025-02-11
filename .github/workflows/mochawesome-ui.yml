@@ -1,4 +1,4 @@
-name: Run UI with Mochawesome
+name: Run API Tests Mochawesome
 
 on:
   workflow_dispatch:
@@ -36,29 +36,14 @@ jobs:
       - name: Run API tests with Mochawesome
         run: npm run test:api-mochawesome
 
-      - name: Merge Mochawesome reports
+      - name: Merge Mochawesome JSON Reports
         run: npm run mochawesome:merge
 
-      - name: Generate Mochawesome report
+      - name: Generate Mochawesome HTML Report
         run: npm run mochawesome:generate
 
-      - name: Load test report history
-        uses: actions/checkout@v3
-        if: always()
-        continue-on-error: true
+      - name: Upload Mochawesome Report
+        uses: actions/upload-artifact@v4
         with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Publish Mochawesome report
-        uses: peaceiris/actions-gh-pages@v3
-        if: always()
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: .
-          allow_empty_commit: true
-          force_orphan: true
-
-      - name: Wait for GitHub Pages to update
-        run: sleep 10
+          name: mochawesome-report-api
+          path: mochawesome-report
