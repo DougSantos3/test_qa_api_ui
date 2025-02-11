@@ -42,19 +42,6 @@ jobs:
       - name: Generate Mochawesome report
         run: npm run mochawesome:generate
 
-      - name: List files in mochawesome-report
-        run: ls -R mochawesome-report
-
-      - name: List files in root
-        run: ls -R .
-
-      - name: Check for merged.html
-        run: |
-          if [ ! -f merged.html ]; then
-            echo "merged.html not found!"
-            exit 1
-          fi
-
       - name: Load test report history
         uses: actions/checkout@v3
         if: always()
