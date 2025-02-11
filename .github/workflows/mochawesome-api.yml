@@ -1,4 +1,4 @@
-name: Run API Mochawesome
+name: Run API with Mochawesome
 
 on:
   workflow_dispatch:
@@ -25,15 +25,3 @@ jobs:
 
       - name: Run API tests
         run: npm run test:api-mochawesome
-
-      - name: Merge Mochawesome JSON Reports
-        run: npm run mochawesome:merge
-
-      - name: Generate Mochawesome HTML Report
-        run: npm run mochawesome:generate
-
-      - name: Upload Mochawesome Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: mochawesome-report-api
-          path: mochawesome-report
