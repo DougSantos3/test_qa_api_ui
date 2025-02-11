@@ -4,20 +4,21 @@ on:
   workflow_dispatch:
     inputs:
       browser:
-        description: 'Select the browser to run the tests'
-        required: true
+        description: 'Select the browser for UI tests'
+        required: false
         type: choice
         options:
           - chrome
           - edge
           - firefox
           - electron
+        default: chrome
 
 permissions:
   contents: write
 
 jobs:
-  ui-tests:
+  cypress-ui-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -38,32 +39,6 @@ jobs:
 
       - name: Generate Allure report
         run: npm run allure:generate
-
-      - name: Load test report history
-        uses: actions/checkout@v3
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Build test report
-        uses: simple-elf/allure-report-action@v1.7
-        if: always()
-        with:
-          gh_pages: gh-pages
-          allure_history: allure-history
-          allure_results: allure-results
-
-      - name: Publish test report
-        uses: peaceiris/actions-gh-pages@v3
-        if: always()
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: allure-history
-          allow_empty_commit: true
-          force_orphan: true
 
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4

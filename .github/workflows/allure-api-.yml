@@ -2,11 +2,12 @@ name: Run API with Allure
 
 on:
   workflow_dispatch:
+
 permissions:
   contents: write
 
 jobs:
-  api-tests:
+  cypress-api-tests:
     runs-on: ubuntu-latest
 
     steps:
