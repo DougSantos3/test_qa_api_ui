@@ -1,11 +1,10 @@
 <h1 align="center">Automation with Cypress on ServeRest</h1>
 <br />
 
-<p style="display: flex; justify-content: center; gap: 10px;">
-<img src="https://sonarcloud.io/api/project_badges/measure?project=DougSantos3_teste_qa_cypress&metric=alert_status" alt="Quality Gate Status" />
-<img src="https://sonarcloud.io/api/project_badges/measure?project=DougSantos3_teste_qa_cypress&metric=bugs" alt="Bugs" />
-<img src="https://sonarcloud.io/api/project_badges/measure?project=DougSantos3_teste_qa_cypress&metric=code_smells" alt="Code Smells" />
-<img src="https://sonarcloud.io/api/project_badges/measure?project=DougSantos3_teste_qa_cypress&metric=duplicated_lines_density" alt="Duplicated Lines (%)" />
+
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=DougSantos3_test_qa_api_ui&metric=bugs)](https://sonarcloud.io/summary/new_code?id=DougSantos3_test_qa_api_ui)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=DougSantos3_test_qa_api_ui&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=DougSantos3_test_qa_api_ui)
+
 </p>
 </div>
 
@@ -24,8 +23,7 @@ v20.18.0 lts
 ```
 
 ```bash
-# npm version: 11.0.0
-# Download dependencies
+# Npm version: 11.0.0 and Download dependencies
 npm install
 ```
 
@@ -34,25 +32,28 @@ Run tests:
 ```bash
 # Open dashboard cypress
 npm run open
+```
 
+```bash
 # Run tests ui env qa
 npm run test:ui-mochawesome
+```
 
+```bash
 # Run tests api env qa
 npm run test:api-mochawesome
+```
 
+```bash
 # After run test, create report. Use this command if you want to merge the json 
 npm run mochawesome:merge
+```
+
+```bash
 # After with this command you will create the html with all the reports
 npm run mochawesome:generate
-
-# A mochawesome-report folder will be generated in the project root and you must enter it, look for the merged.html file where the report with the scenarios will be, just double-click on it.
-
-# The system only has one environment where I left qa as default, but if the system has multiple environments, you just need to change the urls in cypress.config.js and call it via:
-# NODE_ENV=dev npm run test:ui-mochawesome 
-# or 
-# NODE_ENV=prod npm run test:ui-mochawesome
 ```
+
 <br>
 
 ## Tests Overview
@@ -98,7 +99,8 @@ npm run mochawesome:generate
 
 
 # Important
-### The local allure and mochawesome report works but the remote one is in(progress)
+
+The local allure and mochawesome report works but the remote one is in(progress)
 
 ## Learn More
 
@@ -109,6 +111,17 @@ colletion_postman/myCollection.postman_collection.json
 colletion_postman/postman_environment.json
 
 <br>
+
+A mochawesome-report folder will be generated in the project root and you must enter it, look for the merged.html file where the report with the scenarios will be, just double-click on it.
+
+The system only has one environment where I left qa as default, but if the system has multiple environments, you just need to change the urls in cypress.config.js and call it via:
+
+```bash
+# NODE_ENV=dev npm run test:ui-mochawesome
+``` 
+```bash
+# NODE_ENV=prod npm run test:ui-mochawesome
+```
 
 ## Project that was tested
 
