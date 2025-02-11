@@ -1,7 +1,7 @@
 <h1 align="center">Automation with Cypress on ServeRest</h1>
 <br />
 
-
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=DougSantos3_test_qa_api_ui&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=DougSantos3_test_qa_api_ui)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=DougSantos3_test_qa_api_ui&metric=bugs)](https://sonarcloud.io/summary/new_code?id=DougSantos3_test_qa_api_ui)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=DougSantos3_test_qa_api_ui&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=DougSantos3_test_qa_api_ui)
 
@@ -53,6 +53,17 @@ npm run mochawesome:merge
 # After with this command you will create the html with all the reports
 npm run mochawesome:generate
 ```
+
+
+#### A mochawesome-report folder will be generated in the project root and you must enter it, look for the merged.html file where the report with the scenarios will be, just double-click on it.
+
+#### The system only has one environment where I left qa as default, but if the system has multiple environments, you just need to change the urls in cypress.config.js and call it via:
+
+#### NODE_ENV=dev npm run test:ui-mochawesome
+
+#### or
+
+#### NODE_ENV=prod npm run test:ui-mochawesome
 
 <br>
 
@@ -112,16 +123,6 @@ colletion_postman/postman_environment.json
 
 <br>
 
-A mochawesome-report folder will be generated in the project root and you must enter it, look for the merged.html file where the report with the scenarios will be, just double-click on it.
-
-The system only has one environment where I left qa as default, but if the system has multiple environments, you just need to change the urls in cypress.config.js and call it via:
-
-```bash
-# NODE_ENV=dev npm run test:ui-mochawesome
-``` 
-```bash
-# NODE_ENV=prod npm run test:ui-mochawesome
-```
 
 ## Project that was tested
 
