@@ -1,30 +1,28 @@
-name: Run UI with Allure
+name: Run UI with Mochawesome
 
 on:
   workflow_dispatch:
     inputs:
       browser:
-        description: 'Select the browser for UI tests'
-        required: false
+        description: 'Select the browser to run the tests'
+        required: true
         type: choice
         options:
           - chrome
           - edge
           - firefox
           - electron
-        default: chrome
+
 permissions:
   contents: write
 
 jobs:
-  cypress-ui-tests:
+  api-tests:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.inputs.branch }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -35,11 +33,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run selected tests
-        run: TEST_TYPE=ui pm run test:ui-allure
-          
-      - name: Generate Allure report
-        run: npm run allure:generate
+      - name: Run API tests with Mochawesome
+        run: npm run test:api-mochawesome
+
+      - name: Merge Mochawesome reports
+        run: npm run mochawesome:merge
+
+      - name: Generate Mochawesome report
+        run: npm run mochawesome:generate
 
       - name: Load test report history
         uses: actions/checkout@v3
@@ -49,21 +50,15 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Build test report
-        uses: simple-elf/allure-report-action@v1.7
-        if: always()
-        with:
-          gh_pages: gh-pages
-          allure_history: allure-history
-          allure_results: allure-results
-
-      - name: Publish test report
-      
+      - name: Publish Mochawesome report
         uses: peaceiris/actions-gh-pages@v3
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: allure-history
+          publish_dir: .
           allow_empty_commit: true
           force_orphan: true
+
+      - name: Wait for GitHub Pages to update
+        run: sleep 10

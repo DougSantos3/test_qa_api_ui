@@ -2,7 +2,7 @@ name: Run API with Allure
 
 on:
   workflow_dispatch:
-
+ 
 permissions:
   contents: write
 
@@ -26,8 +26,8 @@ jobs:
         run: npm install
 
       - name: Run selected tests
-        run: TEST_TYPE=ui npm run test:api-allure
-
+        run:  TEST_TYPE=ui npm run test:api-allure
+          
       - name: Generate Allure report
         run: npm run allure:generate
 
@@ -46,11 +46,6 @@ jobs:
           gh_pages: gh-pages
           allure_history: allure-history
           allure_results: allure-results
-
-      - name: Clean allure-history
-        run: |
-          rm -rf allure-history/.git || true
-          rm -rf allure-history/* || true
 
       - name: Publish test report
         uses: peaceiris/actions-gh-pages@v3
